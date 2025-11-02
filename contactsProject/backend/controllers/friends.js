@@ -12,7 +12,7 @@ const getAllData = async (req, res, next) => {//get data async way
 
 //get itens by id
 const getSingleById = async (req, res, next) => {
-    // 1. [ADICIONADO] Bloco try...catch para tratar o BSONError
+    
     try {
         const userId = new ObjectId(req.params.id);
         const result = await mongodb.getDb().collection('friends').find({ _id: userId });
