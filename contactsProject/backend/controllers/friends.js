@@ -11,25 +11,6 @@ const getAllData = async (req, res, next) => {//get data async way
 };
 
 //get itens by id
-/*const getSingleById = async (req, res, next) => {
-  
-  const userId = new ObjectId(req.params.id);
-  const result = await mongodb.getDb().collection('friends').find({ _id: userId });
-
-  result.toArray().then((lists) => {
-    if (lists.length > 0) {
-      res.setHeader('Content-type', 'application/jason');
-      res.status(200).json(lists[0]);
-    } else {
-      res.status(404).json({ message: 'Friend not found with ID: ' + req.params.id });
-    }
-  }).catch(err => {
-    res.status(500).json({ message: 'Error retrieving friend!', error: err.message });
-  });
-};*/
-
-//nova tentaiva com try catch block:
-
 const getSingleById = async (req, res, next) => {
     // 1. [ADICIONADO] Bloco try...catch para tratar o BSONError
     try {
