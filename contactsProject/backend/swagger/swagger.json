@@ -1,0 +1,131 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Friends API",
+    "version": "1.0.0",
+    "description": "API for managing friends."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Local server"
+    },
+    {
+      "url": "https://cse341assignmentsrepository.onrender.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/friends/all": {
+      "get": {
+        "summary": "Get all friends",
+        "tags": ["Friends"],
+        "responses": {
+          "200": {
+            "description": "A list of friends",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Friend" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/friends/{id}": {
+      "get": {
+        "summary": "Get a friend by ID",
+        "tags": ["Friends"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Friend found" },
+          "404": { "description": "Friend not found" }
+        }
+      },
+      "put": {
+        "summary": "Update a friend by ID",
+        "tags": ["Friends"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Friend" }
+            }
+          }
+        },
+        "responses": {
+          "204": { "description": "Friend updated successfully" },
+          "400": { "description": "Invalid data" },
+          "404": { "description": "Friend not found" }
+        }
+      },
+      "delete": {
+        "summary": "Delete a friend by ID",
+        "tags": ["Friends"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Friend deleted successfully" },
+          "404": { "description": "Friend not found" }
+        }
+      }
+    },
+    "/friends": {
+      "post": {
+        "summary": "Create a new friend",
+        "tags": ["Friends"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Friend" }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Friend created successfully" },
+          "400": { "description": "Invalid data" }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Friend": {
+        "type": "object",
+        "properties": {
+          "firstName": { "type": "string", "example": "Jacob" },
+          "lastName": { "type": "string", "example": "Farms" },
+          "email": { "type": "string", "example": "jacob@mail.com" },
+          "favoriteColor": { "type": "string", "example": "orange" },
+          "dob": { "type": "string", "example": "2001-01-01" }
+        },
+        "required": ["firstName", "lastName", "email"]
+      }
+    }
+  }
+}

@@ -4,13 +4,13 @@ const bodyParser = require('body-parser');//import module to analize the body re
 const path = require('path');//import module path to deal with directories path
 const mongodb = require('./backend/db/connect');//import the connect.js
 const friendsRoutes = require('./backend/routes/app'); //import router to get 'friends' routes
-const swaggerDocs = require('./backend/swagger/swagger');
-
+const swaggerDocument = require('./backend/swagger/swagger.json');
+const swaggerUi = require('swagger-ui-express');
 const port = process.env.PORT || 8080; //define server port throuth env process variable or use 8080
 const app = express();//main aplication. Instance of the express, app(object) Objective: starts (middlewares, static files, router, server)
                       //Need (module express and mongodb - to start the DB) and friendsRoutes to start the API
 
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(express.static(path.join(__dirname, 'frontend')));//Middleware: config the express to use static files (frontend)
 
 app.get('/', (req, res) => {//route HTTP GET. provide service to HTML to frontend index.html
@@ -21,7 +21,6 @@ app.use(bodyParser.json());//allow express to read body requisitions JSON
 
 app.use('/friends', friendsRoutes); //create the prefixe for URL /friends
 
-swaggerDocs(app);
 mongodb.initDb((err, mongodb) => { //manage the db conection
   if (err) {
     console.log('Db Initialization err: ' ,err);
