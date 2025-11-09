@@ -35,8 +35,74 @@ const getSingleById = async (req, res, next) => {
             });
         }
         // Trata outros erros internos
-        res.status(500).json({ message: 'Error retrieving friend!', error: err.message });
+        res.status(500).json({ message: 'Error retrieving friend! ', error: err.message });
     }
 };
 
-module.exports = {getAllData, getSingleById };//exposts the functions to be used by Router
+//create friend
+const createFriend = async (req, res) => {
+    const friend = {
+
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        favoriteColor: req.body.favoriteColor,
+        dob: req.body.dob
+    };
+    const response = await mongodb.getDb().collection('friends').insertOne(friend);
+    if (response.acknowledged) {
+        res.status(201).json(response);
+    }
+    else {
+        res.status(500).json({ message: 'failed to create friend! ' });
+    }
+};
+
+//update friend
+const updateFriend = async (req, res, next) => {
+  try {
+    const userId = new ObjectId(req.params.id);
+
+    const updatedFriend = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      favoriteColor: req.body.favoriteColor,
+      dob: req.body.dob
+    };
+
+    const result = await mongodb.getDb().collection('friends').replaceOne({ _id: userId }, updatedFriend);
+
+      if (result.modifiedCount > 0) {
+          console.log('Friend updated! ');
+        return res.status(204).send();
+        
+    } else {
+        return res.status(404).json({ message: 'Friend not found!' });
+        
+    }
+
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+};
+
+const deleteFriend = async (req, res) => {
+  try {
+    const userId = new ObjectId(req.params.id);
+    const response = await mongodb.getDb().collection('friends').deleteOne({ _id: userId });
+
+    if (response.deletedCount > 0) {
+      res.status(204).send();
+    } else {
+      res.status(404).json({ message: 'Friend not found.' });
+    }
+  } catch {
+    
+      res.status(400).json({ message: 'Invalid ID format.' });
+  }
+};
+
+
+
+module.exports = {getAllData, getSingleById, createFriend, updateFriend, deleteFriend };//exposts the functions to be used by Router

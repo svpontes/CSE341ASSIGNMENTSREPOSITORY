@@ -63,4 +63,8 @@ router.get('/:id', friendsController.getSingleById);
  */
 router.get('/', friendsController.getAllData);
 
+router.post('/', friendsController.createFriend);
+router.put('/:id', friendsController.updateFriend);
+router.delete('/:id', friendsController.deleteFriend);
+
 module.exports = router; //exports the Router to be used in server.js
