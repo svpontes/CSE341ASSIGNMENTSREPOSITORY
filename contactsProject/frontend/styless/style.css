@@ -1,3 +1,162 @@
-h1{
-    color: crimson;
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fonte e cores base */
+body {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+  color: #f2f2f2;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 40px;
+  width: 90%;
+  max-width: 700px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(6px);
+  text-align: center;
+}
+
+/* Cabeçalho */
+header h1 {
+  color: #4ef037;
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+header h2 {
+  font-weight: 400;
+  color: #b0d6ff;
+  margin-bottom: 20px;
+}
+
+.endpointimg{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    width: 8%;
+    height: auto;
+    
+}
+
+.apidocimg{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    width: 10%;
+    height: auto;
+}
+
+.githubimg{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    width: 25%;
+    height: auto;
+}
+
+.renderimg{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    width: 40%;
+    height: auto;
+}
+
+/* Seções */
+section {
+  margin: 20px 0;
+  text-align: left;
+}
+
+section h3 {
+  color: #9de7ff;
+  margin-bottom: 10px;
+  border-left: 4px solid #4ef037;
+  padding-left: 8px;
+}
+
+/* Listas */
+ul {
+  list-style: none;
+  padding-left: 10px;
+}
+
+li {
+  margin: 8px 0;
+}
+
+/* Links */
+a {
+  color: #4ef037;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Info Section */
+.info p {
+  margin-bottom: 6px;
+  color: #e6e6e6;
+}
+
+/* Footer */
+footer {
+
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 30px;
+  padding-top: 10px;
+  font-size: 0.9rem;
+  color: #cfcfcf;
+  justify-content: center;
+  
+
+}
+
+footer p{
+
+    text-align: center;
+}
+
+
+footer > div{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.ok {
+  color: #4ef037;
+  font-weight: bold;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  section h3 {
+    font-size: 1.1rem;
+  }
 }

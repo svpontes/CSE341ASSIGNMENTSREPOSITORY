@@ -6,6 +6,7 @@ const mongodb = require('./backend/db/connect');//import the connect.js
 const friendsRoutes = require('./backend/routes/app'); //import router to get 'friends' routes
 const swaggerDocument = require('./backend/swagger/swagger.json');
 const swaggerUi = require('swagger-ui-express');
+const errorHandler = require('./backend/middleware/errorHandler');
 const port = process.env.PORT || 8080; //define server port throuth env process variable or use 8080
 const app = express();//main aplication. Instance of the express, app(object) Objective: starts (middlewares, static files, router, server)
                       //Need (module express and mongodb - to start the DB) and friendsRoutes to start the API
@@ -20,6 +21,14 @@ app.get('/', (req, res) => {//route HTTP GET. provide service to HTML to fronten
 app.use(bodyParser.json());//allow express to read body requisitions JSON
 
 app.use('/friends', friendsRoutes); //create the prefixe for URL /friends
+
+// Middleware para rotas inexistentes (404)
+app.use((req, res, next) => {
+  res.status(404).json({ success: false, error: { status: 404, message: 'Page not found.' } });
+});
+
+// Middleware global error treatment
+app.use(errorHandler);
 
 mongodb.initDb((err, mongodb) => { //manage the db conection
   if (err) {

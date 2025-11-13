@@ -1,29 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Servidor Funcionando!</title>
-    <link rel="stylesheet" href="./styless/style.css"> 
+  <meta charset="UTF-8">
+  <title>Succsesfull Conection Endpoints!</title>
+  <link rel="stylesheet" href="./styless/style.css">
 </head>
-
 <body>
-    <h1>Succsesfull Conection Endpoints!</h1>
-    <p>Express serving folder 'frontend'.</p>
-    <p>try first endpoint</p>
-    <ul>
-        <li>
-            <a href="/friends/6910b2b1ce119663152dacaf">Get friends id</a>
-        </li>
-    </ul>
+  <main class="container">
+    <header>
+      <h1>Succsesfull Conection Endpoints!</h1>
+      <h2>CSE 341 - Assignments</h2>
+    </header>
+
+    <section class="info">
+      <p class="week"><strong>WEEK 01</strong></p>
+      <p class="task">Task: <strong>Start developing a new API</strong></p>
+      <p class="project">Project: <strong>W01 - Contacts API (Parte 1)</strong></p>
+    </section>
+        <div>
+            <img class="endpointimg" src="./src/img/endpoint.png" alt="endpoint image icon" width="426" height="384" loading="lazy">
+        </div>
+    <section class="endpoints">
+        
+      <h3>Endpoints</h3>
+      <ul>
+        <li><a href="/friends/6910b2b1ce119663152dacb3">Get a Friend by  ID</a></li>
+        <li><a href="/friends/all">Get All Friends</a></li>
+      </ul>
+    </section>
+    <section class="info">
+      <p class="week"><strong>WEEK 02</strong></p>
+      <p class="task">Task: <strong>Create and publish API documentation.</strong></p>
+      <p class="project">Project: <strong>W02 - Part 2 of the Contacts Project</strong></p>
+    </section>
+        <div>
+            <img class="apidocimg" src="./src/img/apidoc.png" alt="api doc image icon" width="1046" height="1099" loading="lazy">
+        </div>
+    <section class="docs">
+      <h3>📘 API Documentation</h3>
+      <ul>
+        <li><a href="/api-docs" target="_blank">Acessar Swagger UI</a></li>
+      </ul>
+    </section>
+
+    <footer>
+        <div>
+            <a class="renderlink" href="https://cse341assignmentsrepository.onrender.com" target="_blank">
+                <img class="renderimg" src="./src/img/rendericon.png" 
+                alt="Render deployment link icon"
+                width="854" height="166" loading="lazy">
+            </a>
+            <a>https://cse341assignmentsrepository.onrender.com</a>
+        </div>
+             
+       
     
-    <p>try second endpoint</p>
-    <ul>
-        <li>
-            <a href="/friends/all">Get all friends</a>
-        </li>
-    </ul>
-
+      <div>
+            <a class="githublink" href="https://github.com/svpontes/CSE341ASSIGNMENTSREPOSITORY.git" target="_blank">
+                <img class="githubimg" src="./src/img/githubicon.png" 
+                alt="GitHub repository link icon"
+                width="617" height="785" loading="lazy">
+            </a>
+            <a>https://github.com/svpontes/CSE341ASSIGNMENTSREPOSITORY.git</a>
+        </div>
+       
+     <div>
+        <p>Server Working at Render.com — Localhost use port 8080</p>
+     </div>
+    </footer>
+  </main>
 </body>
-
 </html>

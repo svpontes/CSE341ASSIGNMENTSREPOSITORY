@@ -108,7 +108,9 @@
         },
         "responses": {
           "201": { "description": "Friend created successfully" },
-          "400": { "description": "Invalid data" }
+          "400": { "description": "Invalid data" },
+          "404": { "description": "Friend not found" },
+          "500": { "description": "Internal server error" }
         }
       }
     }
