@@ -41,7 +41,7 @@ header h2 {
 
 .endpointimg{
     display: flex;
-    flex-direction: column;
+   
     max-width: 100%;
     width: 8%;
     height: auto;
@@ -50,7 +50,6 @@ header h2 {
 
 .apidocimg{
     display: flex;
-    flex-direction: column;
     max-width: 100%;
     width: 10%;
     height: auto;
@@ -58,17 +57,19 @@ header h2 {
 
 .githubimg{
     display: flex;
-    flex-direction: column;
     max-width: 100%;
-    width: 25%;
+    width: 6%;
     height: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
 }
 
 .renderimg{
     display: flex;
-    flex-direction: column;
     max-width: 100%;
-    width: 40%;
+    width: 20%;
     height: auto;
 }
 
@@ -133,7 +134,7 @@ footer p{
 }
 
 
-footer > div{
+footer > div a{
 
     display: flex;
     justify-content: center;
